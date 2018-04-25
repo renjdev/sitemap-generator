@@ -10,5 +10,8 @@
         }
     ],
     "minimum-stability": "dev",
+    "autoload": {
+        "files": ["Sitemap.php"]
+    }
     "require": {}
 }
