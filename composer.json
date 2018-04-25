@@ -1,5 +1,5 @@
 {
-    "name": "renjdev/sitemap",
+    "name": "renjdev/sitemap-generator",
     "description": "Class to help to generate a site map in xml format. It can be used to generate a dynamic sitemap or an xml file.",
     "type": "library",
     "license": "MIT",
