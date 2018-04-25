@@ -9,5 +9,6 @@
             "email": "renjdev@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {}
 }
