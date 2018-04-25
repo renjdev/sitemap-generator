@@ -1,6 +1,8 @@
 <?php
+namespace renjdev;
 
-class Sitemap {
+class Sitemap
+{
     /**
      * @var XMLWriter object to manage the XML
      */
@@ -10,9 +12,10 @@ class Sitemap {
      * Sitemap constructor.
      *
      * @param XMLWriter $writer
-     * @param string $file
+     * @param string    $file
      */
-    public function __construct(XMLWriter $writer, $file = 'php://output') {
+    public function __construct(XMLWriter $writer, $file = 'php://output')
+    {
         $this->writer = $writer;
         $this->startXml($file);
     }
@@ -22,7 +25,8 @@ class Sitemap {
      *
      * @param $file
      */
-    private function startXml($file) {
+    private function startXml($file)
+    {
         $this->writer->openURI($file);
         $this->writer->startDocument('1.0', 'UTF-8');
         $this->writer->startElement('urlset');
@@ -35,12 +39,14 @@ class Sitemap {
      * Add an url elements to the sitemap
      *
      * Possibles indexes are loc, changefreq, priority
+     *
      * @param array $url
      */
-    public function addUrl($url) {
+    public function addUrl($url)
+    {
         $this->writer->startElement('url');
 
-        foreach ($url as  $property => $value) {
+        foreach ($url as $property => $value) {
             $value = ($priority = 'loc') ? htmlentities($value, ENT_QUOTES, 'UTF-8') : $value ;
             $this->addSingleElement($property, $value);
         }
@@ -55,7 +61,8 @@ class Sitemap {
      * @param $id
      * @param $content
      */
-    private function addSingleElement($id, $content) {
+    private function addSingleElement($id, $content)
+    {
         $this->writer->startElement($id);
         $this->writer->text($content);
         $this->writer->endElement();
@@ -67,7 +74,8 @@ class Sitemap {
      * if a filename was passed on the constructor the file is written, otherwise
      * displays the content of the sitemap.
      */
-    public function generate() {
+    public function generate()
+    {
         $this->writer->endElement();
         $this->writer->endDocument();
 
@@ -79,9 +87,8 @@ class Sitemap {
      *
      * Useful for testing purposes.
      */
-    public function setIndent() {
+    public function setIndent()
+    {
         $this->writer->setIndent(true);
     }
-
 }
-
