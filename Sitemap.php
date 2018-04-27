@@ -1,6 +1,4 @@
 <?php
-namespace renjdev;
-
 class Sitemap
 {
     /**
